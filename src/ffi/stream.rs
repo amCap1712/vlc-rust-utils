@@ -1,8 +1,8 @@
 use libc::{c_char, c_int, c_void, c_ulong, size_t, ssize_t};
 
-enum stream_t {}
-enum block_t {}
-enum vlc_object_t {}
+pub enum stream_t {}
+pub enum block_t {}
+pub enum vlc_object_t {}
 
 extern "C" {
 
@@ -25,10 +25,6 @@ extern "C" {
     pub fn vlc_stream_GetSize(s: *mut stream_t, size: *mut c_ulong) -> c_int;
 
     pub fn stream_HasExtension(s: *mut stream_t, extension: *const c_char) -> bool;
-
-    pub fn stream_ContentType(s: *mut stream_t) -> *mut c_char;
-
-    pub fn stream_MimeType(s: *mut stream_t) -> *mut c_char;
 
     pub fn vlc_stream_NewURL(obj: *mut vlc_object_t, url: *const c_char, ) -> *mut stream_t;
 }
